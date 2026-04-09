@@ -13,12 +13,17 @@ Dica: s.replace(stra, strb) retorna uma versão da string s
 onde todas as instancias de stra foram substituidas por strb.
 """
 
+
 def fix_start(s):
     # +++ SUA SOLUÇÃO +++
-    return
+    # retorno = s.replace(s[0], "*")
+    # retorno = s[0] + retorno[1:]
+    retorno = s[0] + s[1:].replace(s[0], "*")
+    return retorno
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+
 
 def test(f, in_, expected):
     """
@@ -28,18 +33,18 @@ def test(f, in_, expected):
     out = f(in_)
 
     if out == expected:
-        sign = '✅'
-        info = ''
+        sign = "✅"
+        info = ""
     else:
-        sign = '❌'
-        info = f'e o correto é {expected!r}'
+        sign = "❌"
+        info = f"e o correto é {expected!r}"
 
-    print(f'{sign} {f.__name__}({in_!r}) retornou {out!r} {info}')
+    print(f"{sign} {f.__name__}({in_!r}) retornou {out!r} {info}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Testes que verificam o resultado do seu código em alguns cenários.
-    test(fix_start, 'babble', 'ba**le')
-    test(fix_start, 'aardvark', 'a*rdv*rk')
-    test(fix_start, 'google', 'goo*le')
-    test(fix_start, 'donut', 'donut')
+    test(fix_start, "babble", "ba**le")
+    test(fix_start, "aardvark", "a*rdv*rk")
+    test(fix_start, "google", "goo*le")
+    test(fix_start, "donut", "donut")
