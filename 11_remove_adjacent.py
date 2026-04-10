@@ -71,6 +71,12 @@ def remove_adjacent(nums):
     from itertools import groupby
     return [key for key, _ in groupby(nums)]
 
+    """
+    Sétima solução: usando a função zip para comparar cada elemento com o
+    próximo e criar uma nova lista sem adjacentes iguais.
+    """
+    # return [a for a, b in zip(nums, [None] + nums) if a != b]
+
 
 def test(f, in_, expected):
     """
