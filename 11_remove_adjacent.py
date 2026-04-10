@@ -37,7 +37,7 @@ def remove_adjacent(nums):
     Terceira solução: usando uma list comprehension para criar uma nova lista
     sem adjacentes iguais.
     """
-    return [num for i, num in enumerate(nums) if i == 0 or num != nums[i - 1]]
+    # return [num for i, num in enumerate(nums) if i == 0 or num != nums[i - 1]]
 
     """
     Quarta solução: usando uma função auxiliar para remover adjacentes iguais.
@@ -63,6 +63,13 @@ def remove_adjacent(nums):
     #     if num != result[-1]:
     #         result += [num]
     # return result
+
+    """
+    Sexta solução: sendo a mais eficiente possivel usando tudo que tem direito
+    de bibliotecas do padrão Pythonico em uma única linha.
+    """
+    from itertools import groupby
+    return [key for key, _ in groupby(nums)]
 
 
 def test(f, in_, expected):
