@@ -9,12 +9,80 @@ Irá retornar: [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 
 Dica: Use uma custom key= function para extrair o ultimo elemento de cada tupla.
 """
+
+
 def sort_last(tuples):
     # +++ SUA SOLUÇÃO +++
-    return
+    """
+    Primeira solução: usando a função sorted com uma chave de ordenação
+    personalizada com lambda.
+    """
+    # tuples.sort(key=lambda x: x[-1])
+    # return tuples
 
+    """
+    Segunda solução: usando a função sorted com uma chave de ordenação
+    personalizada com uma função definida.
+    """
+    # lista_tuplas = []
+    # while tuples:
+    #     tuple = tuples.pop()
+    #     lista_tuplas.append(tuple)
+    # lista_tuplas.sort(key=lambda x: x[-1])
+    # return lista_tuplas
+
+    """
+    Terceira solução: usando a função sorted com uma chave de ordenação
+    personalizada com uma função definida e sem modificar a lista original.
+    """
+    # lista_tuplas = []
+    # for tuple in tuples:
+    #     lista_tuplas.append(tuple)
+    # lista_tuplas.sort(key=lambda x: x[-1])
+    # return lista_tuplas
+
+    """
+    Quarta Solução: usando a função sorted com uma chave de ordenação
+    personalizada com uma
+    """
+
+    # def last_element(tuple):
+    #     return tuple[-1]
+
+    # return sorted(tuples, key=last_element)
+
+    """
+    Quinta Solução: usando uma função que realiza a mesma
+    coisa que a função sorted, mas sem modificar a lista original.
+    """
+
+    # def sort_by_last_element(tuples):
+    #     sorted_tuples = []
+    #     while tuples:
+    #         min_tuple = min(tuples, key=lambda x: x[-1])
+    #         sorted_tuples.append(min_tuple)
+    #         tuples.remove(min_tuple)
+    #     return sorted_tuples
+
+    # return sort_by_last_element(tuples)
+
+    """
+    Sexta Solução: usando __getitem__ para criar uma chave de ordenação
+    personalizada.
+    """
+
+    # return sorted(tuples, key=lambda x: x.__getitem__(-1))
+
+    """
+    Sétima Solução: usando operator.itemgetter para criar uma chave de
+    ordenação personalizada
+    """
+    from operator import itemgetter
+
+    return sorted(tuples, key=itemgetter(-1))
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+
 
 def test(f, in_, expected):
     """
@@ -24,20 +92,21 @@ def test(f, in_, expected):
     out = f(in_)
 
     if out == expected:
-        sign = '✅'
-        info = ''
+        sign = "✅"
+        info = ""
     else:
-        sign = '❌'
-        info = f'e o correto é {expected!r}'
+        sign = "❌"
+        info = f"e o correto é {expected!r}"
 
-    print(f'{sign} {f.__name__}({in_!r}) retornou {out!r} {info}')
+    print(f"{sign} {f.__name__}({in_!r}) retornou {out!r} {info}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Testes que verificam o resultado do seu código em alguns cenários.
-    test(sort_last, [(1, 3), (3, 2), (2, 1)],
-         [(2, 1), (3, 2), (1, 3)])
-    test(sort_last, [(2, 3), (1, 2), (3, 1)],
-         [(3, 1), (1, 2), (2, 3)])
-    test(sort_last, [(1, 7), (1, 3), (3, 4, 5), (2, 2)],
-         [(2, 2), (1, 3), (3, 4, 5), (1, 7)])
+    test(sort_last, [(1, 3), (3, 2), (2, 1)], [(2, 1), (3, 2), (1, 3)])
+    test(sort_last, [(2, 3), (1, 2), (3, 1)], [(3, 1), (1, 2), (2, 3)])
+    test(
+        sort_last,
+        [(1, 7), (1, 3), (3, 4, 5), (2, 2)],
+        [(2, 2), (1, 3), (3, 4, 5), (1, 7)],
+    )
